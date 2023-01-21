@@ -1,0 +1,28 @@
+{
+    "id": "AC41B14E",
+    "path": "~/rstudio/covid-data/covid-data-script.R",
+    "project_path": "covid-data-script.R",
+    "type": "r_source",
+    "hash": "1711397882",
+    "contents": "",
+    "dirty": false,
+    "created": 1674225980437.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "26,0",
+        "scrollLine": "4",
+        "notebook_format": "html_document"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1674299594,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1674299594668,
+    "read_only": false,
+    "read_only_alternatives": []
+}

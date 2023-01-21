@@ -1,0 +1,27 @@
+
+names <- c("bad","baddo","badest","killer")
+age <- c(24,45,34,52)
+people<-data.frame(names,age)
+head(people)
+str(people)
+glimpse(people)
+mutate(people,age_in_20=age+20)
+setwd("C:/Users/raswe/Documents/rstudio")
+bookings_df<-read.csv("hotel_bookings.csv")
+head(bookings_df)
+colnames(bookings_df)
+
+install.packages("here")
+install.packages("skimr")
+install.packages("janitor")
+install.packages("palmerpenguins")
+library("here")
+library("skimr")
+library("janitor")
+library("palmerpenguins")
+penguins %>%
+  select(species)
+
+clean_names(penguins)
+trimmed_df<-bookings_df%>%
+  select('hotel','is_canceled','lead_time')

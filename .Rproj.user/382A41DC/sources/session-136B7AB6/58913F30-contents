@@ -1,0 +1,26 @@
+#selecting columns
+trimmed_df<-bookings_df%>%
+  select('hotel','is_canceled','lead_time')
+#renaming column
+trimmed_df%>%
+  select(hotel,is_canceled,lead_time)%>%
+  rename(hotel_type=hotel)
+#uniting two coluumns
+unite_example<-bookings_df%>%
+  select(arrival_date_year,arrival_date_month)%>%
+  unite(arrival_date_year,c("arrival_date_month","arrival_date_year"),sep=" ")
+#sumary of sum of number of canceled and avarage lead time
+fresh_sum_mean<-bookings_df%>%
+  summarise(number_cancelled=sum(is_canceled),
+            average_lead_time=mean(lead_time))
+head(fresh_sum_mean)  
+
+hotel_summary <- 
+  bookings_df_2 %>%
+  group_by(hotel) %>%
+  summarise(average_lead_time=mean(lead_time),
+            min_lead_time=min(lead_time),
+            max_lead_time=max(lead_time))
+head(hotel_summary)
+ bookings_df_2%>%
+   summarise(average_lead_time=mean(lead_time))

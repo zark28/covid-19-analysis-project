@@ -1,0 +1,83 @@
+---
+title: "covid19 project"
+author: "Abdul-Razak Adams"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+#COVIG-19 DATA PROJECT
+
+## Setting up environment
+Notes: setting up my environment by clearing previous variable  and loading `Hmics` and covid-19 data set
+Link to data set [COVID19_line_list_data.csv](https://www.kaggle.com/datasets/sudalairajkumar/novel-corona-virus-2019-dataset/versions/25?resource=download)
+
+```{r loading packages}
+install.packages("Hmisc")
+library(Hmisc)
+data <- read.csv("C:/Users/raswe/Downloads/Compressed/archive_1/COVID19_line_list_data.csv")
+```
+
+## Cleaning of covid-19 data set
+
+```{r cleaning data set}
+
+data$death_dummy<- as.integer(data$death !=0)
+
+View(data$death_dummy)
+```
+
+## Finding death rate
+
+```{r death rate for covid-19}
+sum(data$death_dummy)/ nrow(data)
+```
+
+## Hypothesis: people who die from covid-19 are older than people who survive 
+
+``` {r find the stats for dead and alive groups}
+dead=subset(data,death_dummy==1)
+alive=subset(data,death_dummy==0)
+```
+
+### Find the mean ages of the groups 
+```{r find the mean for ages}
+mean(dead$age, na.rm = TRUE)
+mean(alive$age, na.rm = TRUE)
+```
+### Test if the results statistically significant?
+```{r test for significance in age representation}
+t.test(alive$age,dead$age, alternative = "two.sided", conf.level = 0.95)
+```
+
+### Conclusion on age varible effect on covid-19 deaths
+we can say with 95% confidence:people who die are much older than those alive
+if p-value< 0.5 , we reject the null hypothesis.
+this means our results are statistically significant since p-value = 0 < 0.5
+
+
+## Hypothesis: gender has no effect on the death rate 
+
+``` {find the stats for the various groups}
+men=subset(data,gender=="male")
+women=subset(data,gender=="female")
+```
+
+### Find the mean deaths for the groups
+```{r fining mean for deaths}
+mean(men$death_dummy, na.rm = TRUE)
+mean(women$death_dummy, na.rm = TRUE)
+```
+### Test if the results statistically significant?
+```{r test for significance in gender representation}
+t.test(men$death_dummy,women$death_dummy, alternative = "two.sided", conf.level = 0.99)
+```
+
+### Conclusion on gender varible effect on covid-19 deaths
+99% confidence :men have from 0.8% to 8.8% chance higher of dying
+p-value = 0.002 < 0.5 , so results are statistically significant 
+Means men have a higher death rate that women in this population sample and it is a true
+representation of the population
+

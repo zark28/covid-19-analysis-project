@@ -1,0 +1,15 @@
+#get data frame
+data(penguins)
+
+#view data frame
+view(penguins)
+#plot data frame on scatter graph
+ggplot(data=penguins)+geom_point(mapping=aes(x=flipper_length_mm,y=body_mass_g))
+#plot data frame on scatter graph
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species,alpha=species,shape=species,size=species)) +  geom_point()
+#diffrent geom
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = body_mass_g,)) +  geom_smooth()
+
+ggplot(data = diamonds)+geom_bar(mapping = aes(x=cut,fill=cut))
+ggplot(data = diamonds)+geom_bar(mapping = aes(x=cut,fill=clarity))
+       

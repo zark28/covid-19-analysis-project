@@ -1,0 +1,35 @@
+---
+title: "Penguins Plots"
+author: "zark"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Setting up environment
+Notes: setting up my environment by loading `tydyverse` and `palmer penguins` packages
+
+```{r loading packages}
+library("here")
+library("skimr")
+library("janitor")
+library("palmerpenguins")
+library(ggplot2)
+```
+
+## Visualization of penguin data
+
+```{r ggplot for penguin data}
+
+data(penguins)
+
+View(penguins)
+```
+
+## Penguin Flipper length ploted against body mass
+
+```{r ggplot for flipper length and body mass}
+ggplot(data=penguins)+geom_point(mapping=aes(x=flipper_length_mm,y=body_mass_g))
+```
+
